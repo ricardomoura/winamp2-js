@@ -38,6 +38,7 @@ class Winamp {
   constructor(options) {
     this.options = options;
 
+    console.log(this);
     this.media = new Media();
     this.store = getStore(this.media, this.options.__initialState);
 

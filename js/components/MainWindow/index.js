@@ -34,6 +34,7 @@ import Shuffle from "./Shuffle";
 import Time from "./Time";
 import Visualizer from "./Visualizer";
 import MainVolume from "./MainVolume";
+const remote = require('electron').remote;
 
 import "../../../css/main-window.css";
 
@@ -42,6 +43,7 @@ export class MainWindow extends React.Component {
     super(props);
     this._handleClick = this._handleClick.bind(this);
     this._handleDrop = this._handleDrop.bind(this);
+    this._onClose = this._onClose.bind(this);
   }
 
   _handleClick() {
@@ -50,6 +52,13 @@ export class MainWindow extends React.Component {
 
   _handleDrop(e) {
     this.props.loadFilesFromReferences(e);
+  }
+
+  _onClose(e) {
+    e.preventDefault();
+    
+    var window = remote.getCurrentWindow();
+    window.close();
   }
 
   render() {
@@ -93,7 +102,7 @@ export class MainWindow extends React.Component {
           {shade && <MiniTime />}
           <Minimize />
           <Shade />
-          <Close />
+          <Close onClick={this._onClose} />
         </div>
         <div className="status">
           <ClutterBar />

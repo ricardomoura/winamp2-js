@@ -1,6 +1,6 @@
 /* Rules for the page layout */
 body {
-    background-color: #224eb7;
+    -webkit-app-region: drag !important;
     font-family: arial;
     font-size: 15px;
 }
@@ -15,19 +15,6 @@ body {
     left: 50%;
     background: white;
     text-align: center;
-}
-
-.about {
-    position: absolute;
-    bottom: 0;
-    right: 1em;
-    color: white;
-    /* Let users drag windows over this text */
-    z-index: -1;
-}
-
-.about a {
-    color: white;
 }
 
 #winamp2-js #loading {

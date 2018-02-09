@@ -1,7 +1,7 @@
 const path = require("path");
 const webpack = require("webpack");
 
-module.exports = {
+let options = {
   devtool: "source-map",
   resolve: {
     extensions: [".js"]
@@ -49,5 +49,8 @@ module.exports = {
     filename: "[name].js",
     publicPath: "/built/",
     path: path.resolve(__dirname, "built")
-  }
-};
+  },
+  
+}
+
+module.exports = options;

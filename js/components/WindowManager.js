@@ -22,40 +22,13 @@ const abuts = (a, b) => {
 };
 
 class WindowManager extends React.Component {
+
   constructor(props) {
     super(props);
     this.windowNodes = {};
     this.state = {};
     this.getRef = this.getRef.bind(this);
     this.handleMouseDown = this.handleMouseDown.bind(this);
-    this.centerWindows = this.centerWindows.bind(this);
-  }
-
-  componentDidMount() {
-    window.addEventListener("resize", this.centerWindows);
-    const { innerHeight, innerWidth } = window;
-    if (innerHeight || innerWidth) {
-      this.centerWindows();
-    }
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener("resize", this.centerWindows);
-  }
-
-  centerWindows() {
-    const { innerHeight, innerWidth } = window;
-    const state = {};
-    const keys = this.windowKeys();
-    const totalHeight = keys.length * WINDOW_HEIGHT;
-    keys.forEach((key, i) => {
-      const offset = WINDOW_HEIGHT * i;
-      state[key] = {
-        left: innerWidth / 2 - WINDOW_WIDTH / 2,
-        top: innerHeight / 2 - totalHeight / 2 + offset
-      };
-    });
-    this.setState(state);
   }
 
   getRef(key, node) {
@@ -146,6 +119,7 @@ class WindowManager extends React.Component {
         return diff;
       }, {});
 
+
       this.setState(stateDiff);
     };
 
@@ -158,25 +132,15 @@ class WindowManager extends React.Component {
   // Keys for the visible windows
   windowKeys() {
     // TODO: Iterables can probably do this better.
-    return Object.keys(this.props.windows).filter(
+    const windowKeys = Object.keys(this.props.windows).filter(
       key => !!this.props.windows[key]
     );
+    return windowKeys;
   }
 
   render() {
-    const style = {
-      position: "absolute"
-    };
-
-    const parentStyle = {
-      position: "absolute",
-      width: 0,
-      height: 0,
-      top: 0,
-      left: 0
-    };
     return (
-      <div style={parentStyle}>
+      <div>
         {this.windowKeys().map(key => {
           const position = this.state[key];
           return (

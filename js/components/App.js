@@ -6,8 +6,8 @@ import PlaylistWindow from "./PlaylistWindow";
 import EqualizerWindow from "./EqualizerWindow";
 import AvsWindow from "./AvsWindow";
 import Skin from "./Skin";
-
 import "../../css/winamp.css";
+
 
 const genWindowMap = {
   AVS_WINDOW: AvsWindow

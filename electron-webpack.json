@@ -1,0 +1,13 @@
+{
+  "commonSourceDirectory": "js",
+  "title": true,
+
+  "main": {
+    "sourceDirectory": "js/electron"
+  },
+
+  "renderer": {
+    "sourceDirectory": "js",
+    "webpackConfig": "webpack.config.js"
+  }
+}

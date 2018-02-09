@@ -19,12 +19,9 @@ import {
 
 Raven.config(sentryDsn).install();
 
-Raven.context(() => {
-  if (hideAbout) {
-    document.getElementsByClassName("about")[0].style.visibility = "hidden";
-  }
+Raven.context(async () => {
+
   if (!Winamp.browserIsSupported()) {
-    document.getElementById("browser-compatibility").style.display = "block";
     document.getElementById("winamp2-js").style.visibility = "hidden";
     return;
   }
